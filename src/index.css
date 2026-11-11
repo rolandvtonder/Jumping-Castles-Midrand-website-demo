@@ -1,0 +1,189 @@
+@import 'tailwindcss';
+
+/* Castle colours, taken straight from the inflatables: navy turret bands,
+   royal blue (the "J C Midrand" lettering), red roofs, sunny towers,
+   splash-blue bounce floor, palm-leaf green and the combo's grape purple. */
+@theme {
+  --color-ink: #101a3f;
+  --color-navy: #18245a;
+  --color-royal: #1e4fd8;
+  --color-red: #d81f2a;
+  --color-sun: #ffc72c;
+  --color-splash: #1fb3dc;
+  /* Deep enough for white button text to pass 4.5:1 */
+  --color-leaf: #1b7f37;
+  --color-grape: #6b2fa0;
+  --color-cream: #fff7e8;
+  --color-paper: #fffdf8;
+
+  --font-sans: 'Nunito', ui-rounded, 'Arial Rounded MT Bold', system-ui, sans-serif;
+
+  --ease-silk: cubic-bezier(0.2, 0.7, 0.1, 1);
+  --ease-wipe: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-bounce: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+
+html {
+  background: var(--color-ink);
+  color: var(--color-ink);
+  -webkit-font-smoothing: antialiased;
+}
+body {
+  background: var(--color-cream);
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: 17px;
+  line-height: 1.6;
+  overflow-x: clip;
+}
+::selection {
+  background: var(--color-sun);
+  color: var(--color-ink);
+}
+:focus-visible {
+  outline: 3px solid var(--color-sun);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Component classes sit in the components layer so Tailwind utilities
+   (padding, whitespace, colours…) can still override them per element. */
+@layer components {
+  /* Chunky rounded capitals; accent lines lean out in italic and take a colour */
+  .display {
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.02em;
+    line-height: 0.92;
+    text-wrap: balance;
+  }
+  .display .it {
+    font-style: italic;
+  }
+  /* Small wide-tracked capitals for labels and buttons */
+  .caps {
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 13px;
+    font-weight: 800;
+    line-height: 1.5;
+  }
+
+  /* Toy-like "clay" button: a solid under-shadow that squashes when pressed */
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.6rem;
+    min-height: 48px;
+    padding: 0.85rem 1.6rem;
+    border-radius: 999px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 14px;
+    line-height: 1.2;
+    cursor: pointer;
+    box-shadow: 0 5px 0 rgb(16 26 63 / 0.35);
+    transition:
+      transform 160ms var(--ease-silk),
+      box-shadow 160ms var(--ease-silk),
+      background-color 200ms;
+    touch-action: manipulation;
+  }
+  .btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 7px 0 rgb(16 26 63 / 0.35);
+  }
+  .btn:active {
+    transform: translateY(4px);
+    box-shadow: 0 1px 0 rgb(16 26 63 / 0.35);
+  }
+
+  /* Soft clay card */
+  .card {
+    background: var(--color-paper);
+    border-radius: 28px;
+    border: 3px solid rgb(16 26 63 / 0.08);
+    box-shadow:
+      0 10px 0 rgb(16 26 63 / 0.06),
+      0 24px 48px -24px rgb(16 26 63 / 0.25);
+  }
+}
+
+/* Scroll reveals (see useReveals) */
+[data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition:
+    opacity 700ms var(--ease-silk),
+    transform 900ms var(--ease-silk);
+  transition-delay: var(--d, 0s);
+}
+[data-reveal].is-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Menu items jiggle like a bouncing castle wall when hovered */
+@keyframes jelly {
+  0% { transform: scale(1, 1); }
+  25% { transform: scale(0.94, 1.08); }
+  45% { transform: scale(1.07, 0.93); }
+  65% { transform: scale(0.97, 1.03); }
+  85% { transform: scale(1.01, 0.99); }
+  100% { transform: scale(1, 1); }
+}
+.jelly {
+  animation: jelly 700ms var(--ease-silk) both;
+  transform-origin: 50% 100%;
+}
+
+@keyframes marquee {
+  to { transform: translate3d(-50%, 0, 0); }
+}
+.marquee {
+  animation: marquee 32s linear infinite;
+}
+
+/* Slow drift on the hero photos */
+@keyframes drift {
+  from { transform: scale(1.04) translate3d(0, 0, 0); }
+  to { transform: scale(1.14) translate3d(-1.5%, -1%, 0); }
+}
+
+/* Bouncing scroll hint */
+@keyframes hop {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .jelly,
+  .marquee {
+    animation: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+  }
+}

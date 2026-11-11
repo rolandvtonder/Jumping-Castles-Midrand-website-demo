@@ -1,0 +1,122 @@
+{
+  "castle-courtyard": {
+    "w": 1800,
+    "h": 1350,
+    "sw": 760
+  },
+  "castle-kids": {
+    "w": 960,
+    "h": 957,
+    "sw": 760
+  },
+  "castle-garden": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "castle-school": {
+    "w": 1020,
+    "h": 765,
+    "sw": 760
+  },
+  "castle-paving": {
+    "w": 810,
+    "h": 1800,
+    "sw": 342
+  },
+  "castle-lawn": {
+    "w": 720,
+    "h": 1600,
+    "sw": 342
+  },
+  "castle-indoor": {
+    "w": 810,
+    "h": 1800,
+    "sw": 342
+  },
+  "castles-lineup": {
+    "w": 1013,
+    "h": 1800,
+    "sw": 428
+  },
+  "combo-party": {
+    "w": 898,
+    "h": 758,
+    "sw": 760
+  },
+  "combo-foam-slide": {
+    "w": 1800,
+    "h": 1008,
+    "sw": 760
+  },
+  "combo-garden": {
+    "w": 1200,
+    "h": 1600,
+    "sw": 570
+  },
+  "combo-ballpit": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "combo-foam": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "combo-pool-party": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "combo-pool-wide": {
+    "w": 960,
+    "h": 502,
+    "sw": 760
+  },
+  "combo-foam-kids": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "combo-slider": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "combo-slider-2": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "combo-lawn": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "combo-street": {
+    "w": 540,
+    "h": 960,
+    "sw": 428
+  },
+  "combo-slide-view": {
+    "w": 720,
+    "h": 960,
+    "sw": 570
+  },
+  "kiddies-tables": {
+    "w": 720,
+    "h": 935,
+    "sw": 585
+  },
+  "kiddies-set": {
+    "w": 691,
+    "h": 611,
+    "sw": 691
+  },
+  "garden-tables": {
+    "w": 810,
+    "h": 1800,
+    "sw": 342
+  }
+}
